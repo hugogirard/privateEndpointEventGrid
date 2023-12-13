@@ -24,5 +24,5 @@ jobs:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             scope: subscription
             region: ${{ secrets.LOCATION }}
-            template: ./bicep/main.bicep
-            parameters: ./bicep/main.parameters.json location=${{ secrets.LOCATION }}
+            template: ./infra/main.bicep
+            parameters: location=${{ secrets.LOCATION }}
