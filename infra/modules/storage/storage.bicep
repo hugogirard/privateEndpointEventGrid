@@ -20,3 +20,11 @@ resource blob 'Microsoft.Storage/storageAccounts/blobServices@2022-09-01' = {
   properties: {
   }
 }
+
+
+resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2022-09-01' = {
+  name: 'files'
+  parent: blob
+  properties: {
+  }
+}
