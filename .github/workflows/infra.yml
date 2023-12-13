@@ -1,0 +1,28 @@
+name: Create Infra Azure
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-static-web-app:
+
+     runs-on: ubuntu-latest
+
+     steps:
+
+        - uses: actions/checkout@v3
+
+        - name: Login via Azure CLI
+          uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: deploy
+          id: createResources
+          uses: azure/arm-deploy@v1
+          with:
+            subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+            scope: subscription
+            region: ${{ secrets.LOCATION }}
+            template: ./bicep/main.bicep
+            parameters: ./bicep/main.parameters.json location=${{ secrets.LOCATION }}
